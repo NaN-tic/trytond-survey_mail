@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<!-- This file is part survery_mail module for Tryton.
+The COPYRIGHT file at the top level of this repository contains the full copyright notices and license terms. -->
+<tryton>
+    <data>
+        <!-- Survey Configuration -->
+        <record model="ir.ui.view" id="survey_configuration_view_form">
+            <field name="model">survey.configuration</field>
+            <field name="inherit" ref="survey.survey_configuration_view_form"/>
+            <field name="name">configuration_form</field>
+        </record>
+
+        <!-- Survey -->
+        <record model="ir.ui.view" id="survey_view_form">
+            <field name="model">survey.survey</field>
+            <field name="inherit" ref="survey.survey_view_form"/>
+            <field name="name">survey_form</field>
+        </record>
+        <record model="ir.ui.view" id="survey_view_list">
+            <field name="model">survey.survey</field>
+            <field name="inherit" ref="survey.survey_view_list"/>
+            <field name="name">survey_list</field>
+        </record>
+    </data>
+</tryton>

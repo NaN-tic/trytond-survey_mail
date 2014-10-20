@@ -1,0 +1,23 @@
+# 
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:survey.configuration,smtp:"
+msgid "SMTP"
+msgstr "SMTP"
+
+msgctxt "field:survey.survey,email_cc:"
+msgid "Email CC"
+msgstr "Email CC"
+
+msgctxt "field:survey.survey,send_email:"
+msgid "Send Email"
+msgstr "Enviar correo"
+
+msgctxt "help:survey.survey,email_cc:"
+msgid "Emails separated by comma"
+msgstr "Correos electrónicos separados con la coma"
+
+msgctxt "help:survey.survey,send_email:"
+msgid "Survey data will be send by email"
+msgstr "Los datos de la encuesta se enviarán por correo electrónico."
