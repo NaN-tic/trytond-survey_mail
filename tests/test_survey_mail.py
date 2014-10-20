@@ -21,13 +21,13 @@ class SurveyMailCase(unittest.TestCase):
     '''
 
     def setUp(self):
-        trytond.tests.test_tryton.install_module('survery_mail')
+        trytond.tests.test_tryton.install_module('survey_mail')
 
     def test0005views(self):
         '''
         Test views.
         '''
-        test_view('survery_mail')
+        test_view('survey_mail')
 
     def test0006depends(self):
         '''

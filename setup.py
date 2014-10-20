@@ -1,5 +1,5 @@
 #!/usr/bin/env python
-# This file is part of the survery_mail module for Tryton.
+# This file is part of the survey_mail module for Tryton.
 # The COPYRIGHT file at the top level of this repository contains the full
 # copyright notices and license terms.
 
@@ -8,7 +8,7 @@ import re
 import os
 import ConfigParser
 
-MODULE = 'survery_mail'
+MODULE = 'survey_mail'
 PREFIX = 'trytonzz'
 MODULE2PREFIX = {}
 
