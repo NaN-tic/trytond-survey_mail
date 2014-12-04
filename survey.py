@@ -39,7 +39,7 @@ class Survey:
                 'SMTP server',
             'email_title': ("Survey \"%s\""),
             'email_body': ("Data from survey \"%s\"\n\n%s\n\n"
-                "Not repply this email.")
+                "Do not reply this mail.")
             })
 
     @classmethod
