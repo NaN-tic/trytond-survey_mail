@@ -49,7 +49,6 @@ class Survey:
         :param data: dict
         '''
         Config = Pool().get('survey.configuration')
-        SMTP = Pool().get('smtp.server')
 
         super(Survey, cls).save_data(survey, data)
 
@@ -91,9 +90,9 @@ class Survey:
             msg['Message-ID'] = Utils.make_msgid()
 
             try:
-                server = SMTP.get_smtp_server(server)
-                server.sendmail(from_, recipients, msg.as_string())
-                server.quit()
+                smtp_server = server.get_smtp_server()
+                smtp_server.sendmail(from_, recipients, msg.as_string())
+                smtp_server.quit()
             except:
                 logging.getLogger('Survey').error(
                     'Unable to connect to SMTP server.')
