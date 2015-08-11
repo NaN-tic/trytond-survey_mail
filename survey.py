@@ -13,6 +13,8 @@ import logging
 __all__ = ['Configuration', 'Survey']
 __metaclass__ = PoolMeta
 
+logger = logging.getLogger(__name__)
+
 
 class Configuration:
     __name__ = 'survey.configuration'
@@ -94,8 +96,7 @@ class Survey:
                 smtp_server.sendmail(from_, recipients, msg.as_string())
                 smtp_server.quit()
             except:
-                logging.getLogger('Survey').error(
-                    'Unable to connect to SMTP server.')
+                logger.error('Unable to connect to SMTP server.')
                 return False
 
         return True
