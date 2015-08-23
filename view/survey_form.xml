@@ -7,7 +7,7 @@ The COPYRIGHT file at the top level of this repository contains the full copyrig
         <field name="send_email"/>
     </xpath>
     <xpath expr="/form/notebook" position="inside">
-        <page string="Mail" id="mail"  states="{'invisible': Not(Bool(Eval('send_email')))}">
+        <page string="Mail" id="mail">
             <label name="email_cc"/>
             <field name="email_cc"/>
         </page>

@@ -4,7 +4,7 @@
 # copyright notices and license terms.
 from trytond.model import fields
 from trytond.pool import Pool, PoolMeta
-from trytond.pyson import Eval, Bool
+from trytond.pyson import Eval, Not, Bool
 from email import Utils
 from email.header import Header
 from email.mime.text import MIMEText
@@ -43,6 +43,13 @@ class Survey:
             'email_body': ("Data from survey \"%s\"\n\n%s\n\n"
                 "Do not reply this mail.")
             })
+
+    @classmethod
+    def view_attributes(cls):
+        return super(Survey, cls).view_attributes() + [
+            ('//page[@id="mail"]', 'states', {
+                    'invisible': Not(Bool(Eval('send_email'))),
+                    })]
 
     @classmethod
     def save_data(cls, survey, data):
