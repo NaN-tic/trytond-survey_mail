@@ -1,5 +1,5 @@
-==============================
-Encuestas o formularios. Pasos
-==============================
+===========================================
+Encuestas o formularios. Correo electrónico
+===========================================
 
-Agrupación de campos de las encuestas o formularios en diferentes pasos.
+Correo electrónico de las encuestas o formularios.
