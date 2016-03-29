@@ -11,17 +11,18 @@ from email.mime.text import MIMEText
 import logging
 
 __all__ = ['Configuration', 'Survey']
-__metaclass__ = PoolMeta
 
 logger = logging.getLogger(__name__)
 
 
 class Configuration:
+    __metaclass__ = PoolMeta
     __name__ = 'survey.configuration'
     smtp = fields.Property(fields.Many2One('smtp.server', 'SMTP', required=True))
 
 
 class Survey:
+    __metaclass__ = PoolMeta
     __name__ = 'survey.survey'
     send_email = fields.Boolean('Send Email',
         help="Survey data will be send by email")
