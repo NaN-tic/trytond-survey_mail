@@ -9,5 +9,6 @@ def register():
     Pool.register(
         Survey,
         Configuration,
+        ConfigurationSmtp,
         module='survey_mail', type_='model')
 

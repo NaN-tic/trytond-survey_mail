@@ -2,8 +2,12 @@
 # This file is part of the survey_mail module for Tryton.
 # The COPYRIGHT file at the top level of this repository contains the full
 # copyright notices and license terms.
-from trytond.model import fields
+from trytond import backend
+from trytond.model import ModelSQL, fields
 from trytond.pool import Pool, PoolMeta
+from trytond.tools.multivalue import migrate_property
+from trytond.modules.company.model import (
+    CompanyMultiValueMixin, CompanyValueMixin)
 from trytond.pyson import Eval, Not, Bool
 from trytond.sendmail import SMTPDataManager, sendmail_transactional
 from email import Utils
@@ -11,15 +15,40 @@ from email.header import Header
 from email.mime.text import MIMEText
 import logging
 
-__all__ = ['Configuration', 'Survey']
+__all__ = ['Configuration', 'Survey', 'ConfigurationSmtp']
 
 logger = logging.getLogger(__name__)
 
+smtp = fields.Many2One('smtp.server', 'SMTP', required=True)
 
-class Configuration:
+class Configuration(CompanyMultiValueMixin):
     __metaclass__ = PoolMeta
     __name__ = 'survey.configuration'
-    smtp = fields.Property(fields.Many2One('smtp.server', 'SMTP', required=True))
+    smtp = fields.MultiValue(smtp)
+
+
+class ConfigurationSmtp(ModelSQL, CompanyValueMixin):
+    "Survey Configuration SMTP"
+    __name__ = 'survey.configuration.smtp'
+    smtp = smtp
+
+    @classmethod
+    def __register__(cls, module_name):
+        TableHandler = backend.get('TableHandler')
+        exist = TableHandler.table_exist(cls._table)
+
+        super(ConfigurationSmtp, cls).__register__(module_name)
+
+        if not exist:
+            cls._migrate_property([], [], [])
+
+    @classmethod
+    def _migrate_property(cls, field_names, value_names, fields):
+        field_names.extend(['smtp'])
+        value_names.extend(['smtp'])
+        fields.append('company')
+        migrate_property('survey.configuration', field_names, cls, value_names,
+            fields=fields)
 
 
 class Survey:
