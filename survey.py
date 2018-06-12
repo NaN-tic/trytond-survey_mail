@@ -8,12 +8,9 @@ from trytond.pyson import Eval, Not, Bool
 from email import Utils
 from email.header import Header
 from email.mime.text import MIMEText
-import logging
 
 __all__ = ['Configuration', 'Survey']
 __metaclass__ = PoolMeta
-
-logger = logging.getLogger(__name__)
 
 
 class Configuration:
@@ -98,12 +95,6 @@ class Survey:
             # msg['Date']     = Utils.formatdate(localtime = 1)
             msg['Message-ID'] = Utils.make_msgid()
 
-            try:
-                smtp_server = server.get_smtp_server()
-                smtp_server.sendmail(from_, recipients, msg.as_string())
-                smtp_server.quit()
-            except:
-                logger.error('Unable to connect to SMTP server.')
-                return False
+            server.send_mail(from_, recipients, msg.as_string())
 
         return True
